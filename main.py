@@ -1,7 +1,6 @@
 from calculadora import Calculadora
 
 while True:
-    
     try:
         print("""Que operacion desea realizar?\n 1. Suma\n 2. Resta\n 3. Multiplicacion\n 4. Division\n Si desea salir ingrese el numero -1\n""")
         opcion = int(input("Ingrese su opcion: "))
@@ -28,6 +27,4 @@ while True:
             calc_instance.dividir()
         case _:
             print("Debe elegir una opcion correcta.\n")
-    
-    
     
