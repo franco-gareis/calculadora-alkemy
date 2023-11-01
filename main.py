@@ -24,7 +24,7 @@ def menu():
             segundo_numero = int(input("Ingrese el segundo numero: "))
             calc_instance = Calculadora(primer_numero, segundo_numero)
         except ValueError:
-            print("\nLa calculadora solamente acepta numeros enteros.\n")
+            print("\nLa calculadora solamente acepta numeros enteros.")
             continue
         
         match opcion:
