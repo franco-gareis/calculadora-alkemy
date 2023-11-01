@@ -1,45 +1,55 @@
-from calculadora import Calculadora, mostrar_historial, borrar_historial
+from calculadora import Calculadora, FileHandler
+from textwrap import dedent
 
 
 def menu():
     "Corre el menu principal de la calculadora."
-    
+
+    file_handler = FileHandler()
+
     while True:
         try:
-            print("""\nQue operacion desea realizar?\n 1. Suma\n 2. Resta\n 3. Multiplicacion\n 4. Division\n 5. Mostrar historial\n 6. Borrar historial \n 9. Salir""")
+            print(dedent("""\
+                Que operacion desea realizar?
+                1. Suma
+                2. Resta
+                3. Multiplicacion
+                4. Division
+                5. Mostrar historial
+                6. Borrar historial
+                9. Salir\n"""))
             opcion = int(input("Ingrese su opcion: "))
-            
+
             match opcion:
                 case 9:
                     # match case para salir de la aplicacion
                     break
                 case 5:
-                    mostrar_historial()
+                    file_handler.mostrar_historial()
                     continue
                 case 6:
-                    borrar_historial()
+                    file_handler.borrar_historial()
                     continue
-            
+
             primer_numero = int(input("Ingrese el primer numero: "))
             segundo_numero = int(input("Ingrese el segundo numero: "))
-            calc_instance = Calculadora(primer_numero, segundo_numero)
+            calculadora = Calculadora(primer_numero, segundo_numero)
         except ValueError:
             print("\nLa calculadora solamente acepta numeros enteros.")
             continue
-        
+
         match opcion:
             case 1:
-                calc_instance.sumar()
+                calculadora.sumar()
             case 2:
-                calc_instance.restar()
+                calculadora.restar()
             case 3:
-                calc_instance.multiplicar()
+                calculadora.multiplicar()
             case 4:
-                calc_instance.dividir()
+                calculadora.dividir()
             case _:
                 print("Debe elegir una opcion correcta.\n")
 
 
 if __name__ == '__main__':
     menu()
-    
