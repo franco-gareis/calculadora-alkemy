@@ -50,44 +50,38 @@ class Calculadora:
             case _:
                 print("\nDebe ingresar una opcion valida")
 
-    def _format_message(self, method_name, resultado):
+    def _guardar_resultado(self, method_name, resultado):
         default_message = "La {} de {} y {} da: {}\n"
-        return default_message.format(
-            method_name, self.primer_numero,
-            self.segundo_numero, resultado
+        self.file_handler.guardar_resultado(
+            default_message.format(
+                method_name, self.primer_numero,
+                self.segundo_numero, resultado
+            )
         )
 
     def suma(self):
         """Suma dos numeros y guarda su resultado"""
 
         resultado = self.primer_numero + self.segundo_numero
-        self.file_handler.guardar_resultado(
-            self._format_message(self.suma.__name__, resultado)
-        )
+        self._guardar_resultado(self.suma.__name__, resultado)
 
     def resta(self):
         """Resta dos numeros y guarda su resultado"""
 
         resultado = self.primer_numero - self.segundo_numero
-        self.file_handler.guardar_resultado(
-            self._format_message(self.resta.__name__, resultado)
-        )
+        self._guardar_resultado(self.resta.__name__, resultado)
 
     def multiplicacion(self):
         """Multiplica dos numeros y guarda su resultado"""
 
         resultado = self.primer_numero * self.segundo_numero
-        self.file_handler.guardar_resultado(
-            self._format_message(self.multiplicacion.__name__, resultado)
-        )
+        self._guardar_resultado(self.multiplicacion.__name__, resultado)
 
     def division(self):
         """Divide dos numeros y guarda su resultado"""
 
         try:
             resultado = self.primer_numero // self.segundo_numero
-            self.file_handler.guardar_resultado(
-                self._format_message(self.division.__name__, resultado)
-            )
+            self._guardar_resultado(self.division.__name__, resultado)
         except ZeroDivisionError:
             print("\nNo se puede dividir un numero zero")
