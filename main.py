@@ -10,7 +10,7 @@ def menu():
     while True:
         try:
             print(dedent("""\
-                Que operacion desea realizar?
+                \nQue operacion desea realizar?
                 1. Suma
                 2. Resta
                 3. Multiplicacion
@@ -30,25 +30,14 @@ def menu():
                 case 6:
                     file_handler.borrar_historial()
                     continue
-
-            primer_numero = int(input("Ingrese el primer numero: "))
-            segundo_numero = int(input("Ingrese el segundo numero: "))
-            calculadora = Calculadora(primer_numero, segundo_numero)
+                case _:
+                    primer_numero = int(input("Ingrese el primer numero: "))
+                    segundo_numero = int(input("Ingrese el segundo numero: "))
+                    calculadora = Calculadora(primer_numero, segundo_numero)
+                    calculadora.ejecutar_operacion(opcion)
         except ValueError:
             print("\nLa calculadora solamente acepta numeros enteros.")
             continue
-
-        match opcion:
-            case 1:
-                calculadora.sumar()
-            case 2:
-                calculadora.restar()
-            case 3:
-                calculadora.multiplicar()
-            case 4:
-                calculadora.dividir()
-            case _:
-                print("Debe elegir una opcion correcta.\n")
 
 
 if __name__ == '__main__':
